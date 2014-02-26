@@ -1,0 +1,49 @@
+
+<table>
+    <th>Id</th>
+    <th>Título</th>
+    <th>Entradilla</th>
+    <th>Fecha de creación</th>
+    <th>Fecha de edición</th>
+    <th>Id usuario creación</th>
+    <th>Id_Usuario edición</th>
+    <th>Activa</th>
+    <?php foreach ($this->paginador as $entrada): ?>
+    <form action="" method="post">
+        <tr>
+            <td>
+                <a href="<?php echo $this->url(array('action' =>'editar', 'controller' => 'entradas', 'id'=>$entrada->id_entrada), 'admin', true)?>"><?php echo $entrada->id_entrada ?></a>
+            </td>
+            <td>
+                <?php echo $entrada->titulo ?>
+            </td>
+            <td>
+                <?php echo $entrada->entradilla ?>
+            </td>
+            <td>
+                <?php echo $this->formatearFecha($entrada->fecha_creacion, false) ?>
+            </td>
+            <td>
+                <?php echo $this->formatearFecha($entrada->fecha_edicion, false) ?>
+            </td>
+            <td style="text-align: center;">
+                <?php echo $entrada->findParentRow('Application_Model_Usuario', 'Autor')->nombre ?>
+            </td>
+            <td style="text-align: center;">
+                <?php echo $entrada->findParentRow('Application_Model_Usuario', 'Editor')->nombre ?>
+            </td>
+            <td style="text-align: center;">
+                <?php echo $entrada->activo ?>
+            </td>
+            <td >
+                <input type="submit" value="Borrar">
+            </td>
+     </tr>
+        
+    </form>
+    <?php endforeach; ?>
+</table>
+
+<?php echo $this->paginationControl($this->paginador,
+    'Sliding',
+    'paginador.phtml'); ?>

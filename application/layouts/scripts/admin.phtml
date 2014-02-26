@@ -1,0 +1,15 @@
+<?php echo $this->doctype('HTML5');?>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+
+<script type="text/javascript" src="/js/ckeditor/ckeditor.js"></script>     
+</head>
+<body>
+    <a href="<?php echo $this->url(array('action' =>'index', 'controller' => 'login'), 'admin', true)?>">Login</a>
+<a href="<?php echo $this->url(array('action' =>'index', 'controller' => 'index'), 'admin', true)?>">Index</a>
+
+    <?php echo $this->layout()->content;?>
+
+</body>
+</html>
